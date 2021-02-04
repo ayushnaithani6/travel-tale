@@ -1,0 +1,41 @@
+<%- include ("../partials/header") %>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1><span class="glyphicon glyphicon-globe"></span> TravelTale</h1>
+                <p>Share your travel story today !</p>
+                <p>
+                    <a class="btn btn-lg btn-success" href="/blogs/new">Add new Story </a>
+                </p>
+                <div class = "visible-sm visible-xs" style="margin-top: 14px;">
+                    <form action="/blogs" method="GET" class="form-inline">
+                        <span class="form-group">
+                            <input type="text" name="search" placeholder="Search" class="form-control">
+                            <input type="submit" value ="Submit" class="btn btn-default">
+                        </span>
+                    </form> 
+                </div>
+            </div>
+        </header>
+    
+
+
+        <div class="row" style="display:flex; flex-wrap:wrap;">
+            <% blogs.slice().reverse().forEach(function(blog){ %>
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail" id="thumbnail">
+                        <img src="<%= blog.image %>">  
+                        <div class="caption">
+                            <h4 class = "showtitle"> <%= blog.name %> </h4> 
+                        </div>
+                        <p>
+                            <a href="/blogs/<%= blog._id %>" class="btn btn-info">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+
+<%- include ("../partials/footer") %>

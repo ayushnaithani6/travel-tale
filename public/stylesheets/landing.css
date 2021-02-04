@@ -1,0 +1,112 @@
+body {
+    background-color: #000;
+    font-family: Montserrat;
+}
+
+
+#landing-header {
+    z-index: 1;  /* A page can be viewed on x,y,z axis x,y is left and right and up and down z is for 3d forward n backward =1 is comming forward*/
+    position: relative; /* by default its static*/
+    text-align: center;
+    padding-top: 40vh;  /* view height == vw */
+}
+
+#landing-header h1{
+    color: #fff;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+
+.slideshow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;    /* so image is behind the button and h1 */  
+    list-style: none; /* not to see those annoying dots */
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;  /* so image is behind the button and h1 text */  
+    animation: imageAnimation 50s linear infinite;  /* imageAnimation is variable can be anything */
+}
+
+
+.slideshow li:nth-child(1) { 
+  background-image: url(https://images.unsplash.com/photo-1528255915607-9012fda0f838?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1918&q=80); 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://images.unsplash.com/photo-1448518184296-a22facb4446f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://images.unsplash.com/photo-1580600301206-1bcfea01de32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+  animation-delay: 40s; 
+}
+
+/* Review the code and just play around once */
+/* @keyframes Selector to select imageAnimation */
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    #landing-header {
+    z-index: 1;  /* A page can be viewed on x,y,z axis x,y is left and right and up and down z is for 3d forward n backward =1 is comming forward*/
+    position: relative; /* by default its static*/
+    text-align: center;
+    padding-top: 22vh;  /* view height == vw */
+  }
+  .slideshow li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 70% 30%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;  /* so image is behind the button and h1 text */  
+    animation: imageAnimation 50s linear infinite;  /* imageAnimation is variable can be anything */
+  }
+}
