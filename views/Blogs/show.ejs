@@ -5,6 +5,10 @@
         
         <div class="col-md-7">
             <div class="thumbnail">
+                <p>
+                    <em>Posted By : </em> <strong><a href="/users/<%= blog.author.id %>"> <%= blog.author.username %> </a> </strong>
+                    <span class="pull-right"><em>On : </em> <strong> <%= blog.created.toDateString() %></strong></span>
+                </p>
                 <img class="img-responsive" src="<%= blog.image %>">
                 <div class="caption-full">
                     <% if(blog.price != "") { %>
@@ -15,10 +19,6 @@
                     
                     <p><%= blog.description %></p>
                     
-                    <p>
-                        <em>Submitted By : </em> <strong><a href="/users/<%= blog.author.id %>"> <%= blog.author.username %> </a> </strong>
-                        <span class="pull-right"><em>On : </em> <strong> <%= blog.created.toDateString() %></strong></span>
-                    </p>
                     <!-- show login button is user is authenticated && authorized-->
                     <% if(currentUser && blog.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                         <a class="btn btn-sm btn-warning" href="/blogs/<%=blog._id%>/edit">Edit</a>
