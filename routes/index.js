@@ -84,7 +84,10 @@ router.get("/logout", function(req, res){
 });
 
 
-// Forgot password Logic
+
+// my implementation forgot password logic
+
+
 
 router.get('/forgot', function(req, res) {
   res.render('forgot');
@@ -202,6 +205,8 @@ router.post('/reset/:token', function(req, res) {
     res.redirect('/blogs');
   });
 });
+
+
 
 // User Profile 
 router.get("/users/:id", function(req, res) {
