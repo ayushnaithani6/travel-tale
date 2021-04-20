@@ -2,6 +2,7 @@ require('dotenv').config()
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
+    expressSanitizer = require("express-sanitizer"),
     mongoose = require("mongoose"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
@@ -20,6 +21,8 @@ mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true, useCreat
 
 app.locals.moment = moment;  // for using moment in ejs files
 app.use(bodyParser.urlencoded( {extended: true}));
+// express Sanitizer should always be after body parser
+app.use(expressSanitizer());
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 mongoose.set('useFindAndModify', false); // for depreciation warning 
@@ -49,6 +52,7 @@ app.use(function(req, res, next){
     res.locals.success = req.flash("success");
     next();
 });
+
 
 
 // using routes

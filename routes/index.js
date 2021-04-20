@@ -227,4 +227,10 @@ router.get("/users/:id", function(req, res) {
 });
 
 
+
+// how to write blogs
+router.get("/howToWrite", function(req, res){
+  res.render("howToWrite");
+});
+
 module.exports = router;

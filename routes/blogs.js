@@ -83,6 +83,10 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function(req, re
         id: req.user._id,
         username: req.user.username
       }
+      
+    //   sanitizing body to avoid running scripts 
+      req.body.blog.description = req.sanitize(req.body.blog.description);
+      
       Blog.create(req.body.blog, function(err, blog) {
         if (err) {
           req.flash('error', err.message);
@@ -122,6 +126,9 @@ router.get("/:id/edit", middleware.checkBlogOwnership ,function(req, res){
 
 /* ====== Update Route ====== */ 
 router.put("/:id", middleware.checkBlogOwnership, upload.single("image") ,async function(req, res){
+    // checking for scirpts 
+    req.body.blog.description = req.sanitize(req.body.blog.description);
+    
     Blog.findById(req.params.id, async function(err, foundBlog){
         console.log(foundBlog);
         if(err){

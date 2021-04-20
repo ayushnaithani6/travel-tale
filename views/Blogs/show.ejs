@@ -17,7 +17,7 @@
                     
                     <h4 class="showtitle"><a><%= blog.name %></a></h4>
                     
-                    <p><%= blog.description %></p>
+                    <p><%- blog.description %></p>
                     
                     <!-- show login button is user is authenticated && authorized-->
                     <% if(currentUser && blog.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
