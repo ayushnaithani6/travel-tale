@@ -13,7 +13,7 @@
 	<% if(blogs.length == 0) { %>
 		<h2> No posts yet ☹</h2>
 	<% } %>
-	<% blogs.forEach(function(blog){ %>
+	<% blogs.slice().reverse().forEach(function(blog){ %>
 		<div class="col-md-3 col-sm-6">
 			<div class="thumbnail" id="thumbnail">
 				<img src="<%= blog.image %>">  
