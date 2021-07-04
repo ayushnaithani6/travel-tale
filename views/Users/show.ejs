@@ -13,19 +13,22 @@
 	<% if(blogs.length == 0) { %>
 		<h2> No posts yet ☹</h2>
 	<% } %>
-	<% blogs.slice().reverse().forEach(function(blog){ %>
-		<div class="col-md-3 col-sm-6">
-			<div class="thumbnail" id="thumbnail">
-				<img src="<%= blog.image %>">  
-				<div class="caption">
-					<h4 class = "showtitle"> <%= blog.name %> </h4> 
-				</div>
-				<p>
-					<a href="/blogs/<%= blog._id %>" class="btn btn-primary">More Info</a>
-				</p>
-			</div>
-		</div>
-	<% }); %>
+	
+	<div class="row" style="display:flex; flex-wrap:wrap;">
+	    <% blogs.slice().reverse().forEach(function(blog){ %>
+	        <div class="col-md-3 col-sm-6">
+	            <div class="thumbnail" id="thumbnail">
+	                <img src="<%= blog.image %>">  
+	                <div class="caption">
+	                    <h4 class = "showtitle"> <%= blog.name %> </h4> 
+	                </div>
+	                <p>
+	                    <a href="/blogs/<%= blog._id %>" class="btn btn-info">More Info</a>
+	                </p>
+	            </div>
+	        </div>
+	    <% }); %>
+	</div>
 
 </div>
 
